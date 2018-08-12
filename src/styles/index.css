@@ -3,3 +3,26 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.top-navbar {
+  padding: 0;
+  box-shadow: 0px 0.3px 0.3px #999999;
+  margin-bottom: 5px;
+}
+.btn:focus, .btn:visited {
+  box-shadow: none;
+}
+.centered {
+  margin: 0 auto;
+  position: relative;
+}
+.top-navbar .centered {
+  width: 30%;
+  min-width: 410px;
+  position: relative;
+}
+.icon {
+  padding: 5px;
+}
+.btn-white {
+  background-color: #ffffff;
+}

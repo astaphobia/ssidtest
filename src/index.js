@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import {Provider} from "react-redux"
 import {BrowserRouter} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.css'
+import 'material-design-icons/iconfont/material-icons.css'
 
 import App from "./App"
 import registerServiceWorker from "./registerServiceWorker"

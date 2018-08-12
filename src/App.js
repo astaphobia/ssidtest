@@ -7,6 +7,7 @@ import "./styles/App.css"
 import RequireAuth from "./components/RequireAuth"
 import SignIn from "./pages/SignIn"
 import Catalogues from "./pages/Catalogues"
+import TopNavigation from "./components/TopNavigation"
 import {getUser} from "./actions/AuthActions"
 
 class App extends Component {
@@ -15,12 +16,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <Switch>
-          <Route exact path="/" component={RequireAuth(Catalogues)} />
-          <Route path="/signin" component={SignIn} />
-        </Switch>
-      </div>
+      <React.Fragment>
+        <TopNavigation />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={RequireAuth(Catalogues)} />
+            <Route path="/signin" component={SignIn} />
+          </Switch>
+        </div>
+      </React.Fragment>
     )
   }
 }
