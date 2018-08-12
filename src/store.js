@@ -1,14 +1,12 @@
-import {createStore, applyMiddleware} from 'redux'
-import reduxThunk from 'redux-thunk'
-import logger from 'redux-logger'
+import {createStore, applyMiddleware} from "redux"
+import reduxThunk from "redux-thunk"
+import logger from "redux-logger"
+import promiseMiddleware from 'redux-promise-middleware'
 
-import reducers from './reducers'
+import reducers from "./reducers"
 
-let middlwares = [reduxThunk]
-if (process.env.NODE_ENV === 'production') {
-  middlwares = [
-    ...middlwares,
-    logger
-  ]
+let middlewares = [reduxThunk, promiseMiddleware()]
+if (process.env.NODE_ENV === "development") {
+  middlewares = [...middlewares, logger]
 }
-export default createStore(reducers, {}, applyMiddleware(...middlwares))
+export default createStore(reducers, {}, applyMiddleware(...middlewares))
