@@ -1,22 +1,37 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
-import {BrowserRouter, Route} from "react-router-dom"
+import {bindActionCreators} from "redux"
+import {Route, Switch, withRouter} from "react-router-dom"
 
 import "./styles/App.css"
+import RequireAuth from "./components/RequireAuth"
 import SignIn from "./pages/SignIn"
 import Catalogues from "./pages/Catalogues"
+import {getUser} from "./actions/AuthActions"
 
 class App extends Component {
+  componentWillMount() {
+    this.props.actions.getUser()
+  }
   render() {
     return (
-      <BrowserRouter>
-        <div className="container">
-          <Route path="/" component={Catalogues} />
-          <Route exact path="/signin" component={SignIn} />
-        </div>
-      </BrowserRouter>
+      <div className="container">
+        <Switch>
+          <Route exact path="/" component={RequireAuth(Catalogues)} />
+          <Route path="/signin" component={SignIn} />
+        </Switch>
+      </div>
     )
   }
 }
-
-export default connect(null, {})(App)
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({getUser}, dispatch)
+  }
+}
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+)
