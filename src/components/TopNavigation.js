@@ -1,4 +1,5 @@
 import React from "react"
+import {connect} from "react-redux"
 
 class TopNavigation extends React.Component {
   render() {
@@ -18,6 +19,9 @@ class TopNavigation extends React.Component {
               </button>
               <button className="btn btn-white">
                 <i className="icon material-icons">favorite_border</i>
+                {this.props.favorites.length >= 1 ? (
+                  <i className="favorite">{this.props.favorites.length}</i>
+                ) : null}
               </button>
               <button className="btn btn-white">
                 <i className="icon material-icons">card_giftcard</i>
@@ -29,5 +33,11 @@ class TopNavigation extends React.Component {
     )
   }
 }
+function mapStateToProps(state) {
+  return {favorites: state.catalogues.favorites}
+}
 
-export default TopNavigation
+export default connect(
+  mapStateToProps,
+  {}
+)(TopNavigation)
