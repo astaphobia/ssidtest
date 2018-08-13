@@ -1,19 +1,44 @@
 import React from "react"
-import logo from '../logo.svg';
+import {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+import PropTypes from "prop-types"
 
-class Catalogue extends React.Component {
+import Card from "../components/Card"
+import {getList} from "../actions/CatalogueActions"
+
+class Catalogues extends React.Component {
+  static propTypes = {
+    actions: PropTypes.object,
+    user: PropTypes.object
+  }
+  static defaultprops = {
+    user: {}
+  }
+
+  componentDidMount() {
+    this.props.actions.getList(this.props.user.uid)
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <React.Fragment>
+        {this.props.catalogues.catalogues.map((catalogue, index) => (
+          <Card key={index} data={catalogue} />
+        ))}
+      </React.Fragment>
     )
   }
 }
-export default Catalogue
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({getList}, dispatch)
+  }
+}
+function mapStateToProps(state) {
+  return {
+    catalogues: state.catalogues
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Catalogues)

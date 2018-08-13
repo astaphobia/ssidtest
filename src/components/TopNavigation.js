@@ -12,7 +12,7 @@ class TopNavigation extends React.Component {
               </button>
               <span>Dress</span>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+            <div className="col-lg-6 col-md-6 col-sm-6 col-6 text-right">
               <button className="btn btn-white">
                 <i className="icon material-icons">search</i>
               </button>

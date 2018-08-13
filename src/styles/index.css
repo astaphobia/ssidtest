@@ -1,7 +1,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: system,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,Sans-serif;
+  background-color: #f5f5f5;
+  font-size: 1em;
+  line-height: 1.6;
 }
 .top-navbar {
   padding: 0;
@@ -20,9 +23,31 @@ body {
   min-width: 410px;
   position: relative;
 }
+.main .centered {
+  width: 30%;
+  min-width: 410px;
+  position: relative;;
+}
 .icon {
   padding: 5px;
 }
 .btn-white {
   background-color: #ffffff;
+}
+.cel {
+  display: table;
+  width: 100%;
+}
+.cel .cel-6 {
+  display: table-cell;
+  vertical-align: top;
+}
+.cel p {
+  margin: 0px;
+}
+.card p.price {
+  font-weight: bold;
+}
+.f-right {
+  float: right;
 }

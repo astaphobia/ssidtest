@@ -18,12 +18,14 @@ class App extends Component {
     return (
       <React.Fragment>
         <TopNavigation />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={RequireAuth(Catalogues)} />
-            <Route path="/signin" component={SignIn} />
-          </Switch>
-        </div>
+        <main className="main">
+          <div className="centered">
+            <Switch>
+              <Route exact path="/" component={RequireAuth(Catalogues)} />
+              <Route path="/signin" component={SignIn} />
+            </Switch>
+          </div>
+        </main>
       </React.Fragment>
     )
   }
@@ -33,9 +35,14 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({getUser}, dispatch)
   }
 }
+function mapStateToProps(state) {
+  return {
+    isLogged: !state.auth.user
+  }
+}
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(App)
 )

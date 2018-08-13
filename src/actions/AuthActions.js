@@ -1,18 +1,18 @@
 import {auth} from "../firebase"
 
-export const signInAnnonim = () => {
-  return {
+export const signInAnnonim = () => dispatch => {
+  return dispatch({
     type: "SIGNIN_ANNONIM",
     payload: auth.signInAnonymously()
-  }
+  })
 }
 
-export const getUser = () => (dispatch) => {
-  auth.onAuthStateChanged( user => {
+export const getUser = () => dispatch => {
+  auth.onAuthStateChanged(user => {
     if (user) {
       return dispatch({
         type: "GET_USER",
-        payload:{...user}
+        payload: {...user}
       })
     }
   })
