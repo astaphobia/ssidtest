@@ -1,6 +1,8 @@
 const initialState = {
   catalogues: [],
-  favorites: []
+  favorites: [],
+  catalogue: null,
+  loading: false
 }
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -13,6 +15,23 @@ export default (state = initialState, action) => {
         ...state,
         catalogues
       }
+    case "GET_CATALOGUE_PENDING":
+      return {
+        ...state,
+        loading: true
+      }
+    case "GET_CATALOGUE_FULFILLED": {
+      if (action.payload.exists) {
+        return {
+          ...state,
+          catalogue: action.payload.data(),
+          loading: false
+        }
+      }
+      return {...state, loading: false}
+    }
+    case "GET_CATALOGUE_REJECTED":
+      return {...state, loading: false}
     case "ADD_TO_FAVORITE": {
       let {favorites} = state
       favorites = [...favorites, action.payload]
@@ -24,7 +43,9 @@ export default (state = initialState, action) => {
     }
     case "REMOVE_FROM_FAVORITE": {
       let {favorites} = state
-      favorites = favorites.filter(favorite => favorite.id !== action.payload.id)
+      favorites = favorites.filter(
+        favorite => favorite.id !== action.payload.id
+      )
       return {
         ...state,
         favorites

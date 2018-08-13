@@ -2,6 +2,7 @@ import React from "react"
 import {connect} from "react-redux"
 import {bindActionCreators} from "redux"
 import PropTypes from "prop-types"
+import {Link} from 'react-router-dom'
 
 import Card from "../components/Card"
 import {price} from "../helpers/format"
@@ -62,7 +63,7 @@ class Catalogues extends React.Component {
                             <i className="material-icons">favorite_border</i>
                           </button>
                         )}
-                        <button className="btn btn-danger">LIHAT</button>
+                        <Link className="btn btn-danger" to={`/${catalogue.product_id}`}>LIHAT</Link>
                       </div>
                     </div>
                   </div>
