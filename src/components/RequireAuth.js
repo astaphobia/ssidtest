@@ -5,9 +5,6 @@ import Loader from './Loader'
 
 export default Composed => {
   class Authentication extends React.Component {
-    componentWillMount() {
-      this.props.acti
-    }
     render() {
       return (
         <React.Fragment>
