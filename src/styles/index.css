@@ -6,10 +6,18 @@ body {
   font-size: 1em;
   line-height: 1.6;
 }
+#root{
+  padding-top: 53px;
+}
 .top-navbar {
   padding: 0;
   box-shadow: 0px 0.3px 0.3px #999999;
   margin-bottom: 5px;
+  position: fixed;
+  width: 100%;
+  z-index: 777;
+  top: 0;
+  left: 0;
 }
 .btn:focus, .btn:visited {
   box-shadow: none;
