@@ -6,3 +6,10 @@ export const getList = uid => async dispatch => {
     payload: firestoreRef.collection("/catalogues").get()
   })
 }
+export const favorite = (item) => {
+  console.log(item)
+  return {
+    type: 'ADD_TO_FAVORITE',
+    payload: item
+  }
+}

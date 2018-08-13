@@ -1,21 +1,29 @@
-import React from "react";
+import React from "react"
+
+import "../styles/Loader.css"
 
 const Loader = () => {
   return (
-    <div style={{ marginTop: 50 }} className="preloader-wrapper big active">
-      <div className="spinner-layer spinner-teal-only">
-        <div className="circle-clipper left">
-          <div className="circle" />
-        </div>
-        <div className="gap-patch">
-          <div className="circle" />
-        </div>
-        <div className="circle-clipper right">
-          <div className="circle" />
-        </div>
-      </div>
+    <div className="centered text-center" style={{top: '200px'}}>
+      <svg
+        className="spinner"
+        width="65px"
+        height="65px"
+        viewBox="0 0 66 66"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          className="path"
+          fill="none"
+          strokeWidth="6"
+          strokeLinecap="round"
+          cx="33"
+          cy="33"
+          r="30"
+        />
+      </svg>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

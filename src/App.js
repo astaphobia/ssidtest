@@ -8,11 +8,11 @@ import RequireAuth from "./components/RequireAuth"
 import SignIn from "./pages/SignIn"
 import Catalogues from "./pages/Catalogues"
 import TopNavigation from "./components/TopNavigation"
-import {getUser} from "./actions/AuthActions"
+import * as actions from "./actions/AuthActions"
 
 class App extends Component {
   componentWillMount() {
-    this.props.actions.getUser()
+    this.props.actions.signInAnnonim();
   }
   render() {
     return (
@@ -32,12 +32,13 @@ class App extends Component {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({getUser}, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   }
 }
 function mapStateToProps(state) {
   return {
-    isLogged: !state.auth.user
+    isLogged: !state.auth.user,
+    ...state.auth
   }
 }
 export default withRouter(

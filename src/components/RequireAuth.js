@@ -1,23 +1,27 @@
 import React from "react"
 import {connect} from "react-redux"
-import {Redirect} from "react-router-dom"
+
+import Loader from './Loader'
 
 export default Composed => {
   class Authentication extends React.Component {
+    componentWillMount() {
+      this.props.acti
+    }
     render() {
       return (
         <React.Fragment>
           {this.props.user ? (
             <Composed {...this.props} />
           ) : (
-            <Redirect push to={`/signin`} />
+            <Loader/>
           )}
         </React.Fragment>
       )
     }
   }
   function mapStateToProps(state) {
-    return {user: state.auth.user}
+    return {...state.auth}
   }
   return connect(
     mapStateToProps,

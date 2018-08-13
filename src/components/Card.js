@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {price} from "../helpers/format"
+import Loader from "./Loader"
 
 class Card extends React.Component {
   static propTypes = {
@@ -8,6 +9,10 @@ class Card extends React.Component {
   }
   static defaultProps = {
     data: {}
+  }
+  handleFavorite = e => {
+    e.preventDefault()
+    return this.props.actions.favorite(this.props.data)
   }
 
   render() {
@@ -38,5 +43,4 @@ class Card extends React.Component {
     )
   }
 }
-
 export default Card

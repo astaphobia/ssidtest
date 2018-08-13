@@ -1,6 +1,6 @@
-
 const initialState = {
-  user: false
+  user: false,
+  loading: false
 }
 
 export default (state = initialState, action) => {
@@ -10,10 +10,21 @@ export default (state = initialState, action) => {
         ...state,
         user: action.payload.user
       }
-    case 'GET_USER':
+    case "GET_USER_PENDING":
       return {
         ...state,
-        user: action.payload
+        loading: true
+      }
+    case "GET_USER_FULFILLED":
+      return {
+        ...state,
+        user: action.payload,
+        loading: false
+      }
+    case "GET_USER_REJECTED":
+      return {
+        ...state,
+        loading: false
       }
     default:
       return state

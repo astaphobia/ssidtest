@@ -31,7 +31,7 @@ body {
   min-width: 410px;
   position: relative;
 }
-.main .centered {
+.main>.centered {
   width: 30%;
   min-width: 410px;
   position: relative;;
